@@ -1,6 +1,8 @@
-Name: arcgis-rtools Description: Using R in ArcGIS
+Name: R-toolbox-py Description: Using Python as a medium to call R
+functionality within ArcGIS.  The repository contains an ArcGIS Toolbox and
+two example scripts (Point Clustering and Logistic Regression)
 
-# arcgis-rtools
+# R-toolbox-py
 
 This toolbox contains a framework for using R (The R Project for Statistical
 Computing) in ArcGIS 10 and 10.1. This is the third version of the toolbox.
@@ -16,10 +18,10 @@ Learn more
 [View it
 live](http://video.esri.com/watch/1925/integrating-open_dash_source-statistical-packages-with-arcgis)
 
-![App](https://raw.github.com/Esri/arcgis-rtools/master/quickstart-map-js.png)
+![App](https://raw.github.com/Esri/R-toolbox-py/master/R-toolbox-image.png)
 
 ## Features
-* Scripts - Runs R code within ArcGIS
+* Toolbox with Python Script Tools - Runs R code within ArcGIS Environment
 
 ## Instructions
 
@@ -32,11 +34,6 @@ live](http://video.esri.com/watch/1925/integrating-open_dash_source-statistical-
 * R
 
 ## Resources
-
-* [ArcGIS for JavaScript API Resource
-  Center](http://help.arcgis.com/en/webapi/javascript/arcgis/index.html)
-* [ArcGIS Blog](http://blogs.esri.com/esri/arcgis/)
-* [twitter@esri](http://twitter.com/esri)
 
 ## Issues
 
@@ -62,8 +59,8 @@ License for the specific language governing permissions and limitations under
 the License.
 
 A copy of the license is available in the repository's [license.txt](
-https://raw.github.com/Esri/arcgis-rtools/master/license.txt) file.
+https://raw.github.com/Esri/R-toolbox-py/master/license.txt) file.
 
-[](Esri Tags: ArcGIS Python R Analysis Geoprocessing) [](Esri Language:
-Python)?
+[](Esri Tags: ArcGIS Python R Analysis Geoprocessing Statistics Tools) 
+[](Esri Language: Python R)
 
