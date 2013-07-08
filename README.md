@@ -44,7 +44,7 @@ an issue.
 
 Anyone and everyone is welcome to contribute. 
 
-## Licensing Copyright 2012 Esri
+## Licensing Copyright 2013 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not
 use this file except in compliance with the License.  You may obtain a copy of
@@ -62,5 +62,5 @@ A copy of the license is available in the repository's [license.txt](
 https://raw.github.com/Esri/R-toolbox-py/master/license.txt) file.
 
 [](Esri Tags: ArcGIS Python R Analysis Geoprocessing Statistics Tools) 
-[](Esri Language: Python R)
+[](Esri Language: R)
 
