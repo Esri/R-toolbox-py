@@ -6,21 +6,23 @@ import subprocess as SUB
 import arcpyWithR as RARC
 
 #### Parameter Dictionaries ####
-clusterDict = {"KMEANS_HARTIGAN": "kmeansHartigan", "CLARA": "clara", 
-               "B_CLUST": "bclust", "M_CLUST": "Mclust", 
-               "KCCA_KMEANS": "kccaKmeans", 
-               "CMEANS": "cmeans"} 
+clusterDict = {"KMEANS_HARTIGAN": "kmeansHartigan", "CLARA": "clara",
+               "B_CLUST": "bclust", "M_CLUST": "Mclust",
+               "KCCA_KMEANS": "kccaKmeans",
+               "CMEANS": "cmeans"}
 
 def PointClusters():
     #### Get User Provided Inputs ####
-    inputFC = ARCPY.GetParameterAsText(0) 
-    outputFC = ARCPY.GetParameterAsText(1) 
+    inputFC = ARCPY.GetParameterAsText(0)
+    outputFC = ARCPY.GetParameterAsText(1)
     numClusters = ARCPY.GetParameterAsText(2)
     clusterMethod = ARCPY.GetParameterAsText(3)
     clusterMethodStr = clusterDict[clusterMethod]
     varNames = ARCPY.GetParameterAsText(4)
     varNames = [ str(i) for i in varNames.split(";") ]
     varNames = ";".join(varNames)
+    if varNames == '':
+        varNames = "NA"
     useLocation = ARCPY.GetParameterAsText(5)
     if useLocation == 'true':
         useLocation = "1"
@@ -34,7 +36,7 @@ def PointClusters():
     ARCPY.SetProgressor("default", "Executing R Script...")
     args = ["R", "--slave", "--vanilla", "--args",
             inputFC, outputFC, numClusters, clusterMethodStr,
-            varNames, useLocation] 
+            varNames, useLocation, toolDir]
 
     #### Uncomment Next Two Lines to Print/Create Command Line Args ####
     #cmd = RARC.createRCommand(args, rScript)
@@ -42,9 +44,9 @@ def PointClusters():
 
     #### Execute Command ####
     scriptSource = open(rScript, 'rb')
-    rCommand = SUB.Popen(args, 
+    rCommand = SUB.Popen(args,
                          stdin = scriptSource,
-                         stdout = SUB.PIPE, 
+                         stdout = SUB.PIPE,
                          stderr = SUB.PIPE,
                          shell=True)
 
@@ -68,4 +70,4 @@ def PointClusters():
 
 if __name__ == '__main__':
 
-    test = PointClusters() 
+    test = PointClusters()
