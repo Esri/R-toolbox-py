@@ -10,6 +10,7 @@ numClusters = as.integer(Args[7])
 clusterMethod = Args[8]
 fields = Args[9]
 useLocation = as.integer(Args[10])
+scriptDir = Args[11]
 useFields = FALSE
 
 #### Create Field Names is Applicable ####
@@ -21,7 +22,9 @@ if (fields != "NA"){
 
 #### Import the Cluster Library ####
 print("Loading Libraries....")
-require(clustTool)
+# include the core clust function from clustTools
+clust.include <- paste(sep="/", scriptDir, "clust.R")
+source(clust.include)
 
 #### Using Maptools For Shapefiles ####
 library(maptools)  	
