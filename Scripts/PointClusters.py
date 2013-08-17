@@ -36,7 +36,7 @@ def PointClusters():
     ARCPY.SetProgressor("default", "Executing R Script...")
     args = ["R", "--slave", "--vanilla", "--args",
             inputFC, outputFC, numClusters, clusterMethodStr,
-            varNames, useLocation] 
+            varNames, useLocation, toolDir] 
 
     #### Uncomment Next Two Lines to Print/Create Command Line Args ####
     #cmd = RARC.createRCommand(args, rScript)
