@@ -21,6 +21,8 @@ def PointClusters():
     varNames = ARCPY.GetParameterAsText(4)
     varNames = [ str(i) for i in varNames.split(";") ]
     varNames = ";".join(varNames)
+    if varNames == '':
+        varNames = "NA"
     useLocation = ARCPY.GetParameterAsText(5)
     if useLocation == 'true':
         useLocation = "1"
