@@ -1,3 +1,4 @@
+import os
 import _winreg
 
 def findRExecutable():
