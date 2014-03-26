@@ -1,7 +1,11 @@
 import os
-import _winreg
 
 def findRExecutable():
+    try:
+        import _winreg
+    except ImportError: # Non-windows builds
+        return "R"
+
     handle = None
     try:
         handle =_winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE,
