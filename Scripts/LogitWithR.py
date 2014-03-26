@@ -36,7 +36,7 @@ def setupLogit():
     toolDir = OS.path.dirname(pyScript)
     rScript = OS.path.join(toolDir, "logitWithR.r")
     ARCPY.SetProgressor("default", "Executing R Script...")
-    args = ["R", "--slave", "--vanilla", "--args",
+    args = [RARC.findRExecutable(), "--slave", "--vanilla", "--args",
             inputFC, outputFC, depVarName, indVarNames, 
             usePenalty, coefTable, diagTable]
 
