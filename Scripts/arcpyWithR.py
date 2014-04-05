@@ -1,3 +1,29 @@
+import os
+
+def findRExecutable():
+    try:
+        import _winreg
+    except ImportError: # Non-windows builds
+        return "R"
+
+    handle = None
+    try:
+        handle =_winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE,
+                                r"SOFTWARE\R-Core\R")
+        i = 0
+        while True:
+            key, value, _ = _winreg.EnumValue(handle, i)
+            if key.lower() == "installpath":
+                r_executable_path = os.path.join(value, "bin", "R.exe")
+                return r_executable_path
+            i += 1
+    except:
+        return "R"
+    finally:
+        if handle is not None:
+            _winreg.CloseKey(handle)
+    # Fall back to default (hope it's on the %PATH%)
+    return "R"
 
 def printRMessages(resString):
     initLine = '[1] "Loading Libraries...."'

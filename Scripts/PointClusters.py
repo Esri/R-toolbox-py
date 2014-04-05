@@ -34,7 +34,7 @@ def PointClusters():
     toolDir = OS.path.dirname(pyScript)
     rScript = OS.path.join(toolDir, "PointClusters.r")
     ARCPY.SetProgressor("default", "Executing R Script...")
-    args = ["R", "--slave", "--vanilla", "--args",
+    args = [RARC.findRExecutable(), "--slave", "--vanilla", "--args",
             inputFC, outputFC, numClusters, clusterMethodStr,
             varNames, useLocation, toolDir]
 
