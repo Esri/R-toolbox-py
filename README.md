@@ -62,5 +62,5 @@ A copy of the license is available in the repository's [license.txt](
 https://raw.github.com/Esri/R-toolbox-py/master/license.txt) file.
 
 [](Esri Tags: ArcGIS Python R Analysis Geoprocessing Statistics Tools) 
-[](Esri Language: R)
+[](Esri Language: Python)
 
