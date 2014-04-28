@@ -26,7 +26,7 @@ include:
         ```
 
         - The output should include the following (the exact output will be different, but should include the pathnames listed above)
-    ![arcgis-python-path](./InstallDoc_files/image001.png)
+    ![arcgis-python-path](./images/image001.png)
     - If you do not see the directories listed (which is unlikely), add them in Step XX below
     - Close ArcMap 
 
@@ -69,20 +69,20 @@ Current versions of this script automatically detect and set the correct path fo
 2. Copy the full path location of the bin folder (by default it would install here: `C:\Program Files (x86)\R\R-2.11.1\bin`) 
 3.  Go to your Start Menu, find the My Computer icon (or just Computer icon, depending on what operating system you are using), right click on it, and choose the Properties option
 
-    ![properties-start-menu](./InstallDoc_files/image003.png)
+    ![properties-start-menu](./images/image003.png)
 
 4. For both Windows Vista and Windows 7, this will open a dialog where you will then click the Advanced System Settings link on the left side (highlighted in red).  For Windows XP, this will open the System Properties dialog box, from which you will choose the Advanced tab (highlighted in red in)
-    ![properties-menus](./InstallDoc_files/image005.png)
+    ![properties-menus](./images/image005.png)
 
 5. The next window will have a button on the bottom that says Environment Variables, click it and the following dialog will appear
 
-    ![environment-variables](./InstallDoc_files/image007.png)
+    ![environment-variables](./images/image007.png)
 
 6. Find the environment variable called Path (or PATH).  This may be in the User Variables, and it may be in the System Variables.  If you are the only person that uses your machine, this distinction should not matter.  If your machine is shared, and you use the Path variable that is a user variable, then you will be the only person impacted by the change.  If you want your changes to be shared by all users, make sure to use the System Variable.  
 
 7. Select the Path Variable, and click Edit
 
-    ![environment-variables](./InstallDoc_files/image009.png)
+    ![environment-variables](./images/image009.png)
 
 7. At the end of the list of directories, add a semi-colon (;) with NO space after it, and then paste in the R Bin directory that you copied earlier (should look something like this: `C:\Program Files (x86)\R\R-2.11.1\bin`) 
 
