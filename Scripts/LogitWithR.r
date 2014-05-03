@@ -2,20 +2,26 @@
 print("Loading Libraries....")
 library(maptools)  		
 library(sm)
+library(foreign)
 
 #### Check Version for Required "lrm" Package ####
 checkRVersion = function(checkMajor, checkMinor){
-    majorBool = as.numeric(R.version$major) >= checkMajor
-    minorBool = as.numeric(R.version$minor) >= checkMinor
-    majorBool & minorBool
+    minorBool = as.numeric(R.version$minor) >= checkMinor	#will work until v3.14
+	if (!minorBool)	{
+		majorBool = as.numeric(R.version$major) > checkMajor
+		if (majorBool)	{
+			minorBool = TRUE
+			}
+		}
+    if (majorBool & minorBool)	{
+		library(rms)
+		}
+	else	{
+		library(Design)
+		}
     }
 
 versionBool = checkRVersion(2, 14)
-if (versionBool){
-    library(rms)
-}else{
-    require(Design)
-}
 
 #### Get Arguments ####
 Args = commandArgs()
