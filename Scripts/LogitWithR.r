@@ -7,6 +7,7 @@ library(foreign)
 #### Check Version for Required "lrm" Package ####
 checkRVersion = function(checkMajor, checkMinor){
     minorBool = as.numeric(R.version$minor) >= checkMinor	#will work until v3.14
+    majorBool = as.numeric(R.version$major) == checkMajor
 	if (!minorBool)	{
 		majorBool = as.numeric(R.version$major) > checkMajor
 		if (majorBool)	{
