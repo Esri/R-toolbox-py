@@ -74,7 +74,7 @@ if (usePenalty){
     }
 
 ### Residuals ####
-res = residuals.lrm(fit)
+res = resid(fit)
 resOut = c(res)
 resSTD = (resOut - mean(resOut)) / sqrt(var(resOut))
 
