@@ -86,18 +86,9 @@ shp$StdResid = resSTD
 writeSpatialShape(shp, outputFC)
 
 ### Write Coefficient DBF Table ####
-allIndVars = c("Intercept")
-allIndVars = append(allIndVars, independentVars)
-k = length(allIndVars)
-d = matrix(0, k, 4)
-d[,1] = fit$coefficients
-d[,2] = sqrt(diag(fit$var))
-d[,3] = d[,1] / d[,2]
-d[,4] = pnorm(abs(d[,3]), lower.tail = FALSE) * 2.0
-coefList = list("Variable" = allIndVars, "Coef" = d[,1], 
-               "StdError" = d[,2], "Wald" = d[,3], 
-               "Prob" = d[,4])
-coefFrame = data.frame(coefList)
+coefFrame <- data.frame(c("Intercept",independentVars))
+names(coefFrame)[1] <- "Coefficients"
+coefFrame <- cbind(coefFrame,coef(summary(fit)))
 write.dbf(coefFrame, coefTable)
 
 ### Write Diagnostic DBF Table ####
