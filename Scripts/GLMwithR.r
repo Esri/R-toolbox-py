@@ -4,6 +4,7 @@ library(maptools)
 library(sm)
 require(foreign)
 require(MASS)
+require(ggplot2)
 require(GGally)
 require(texreg)
 
