@@ -1,6 +1,4 @@
-Name: R-toolbox-py Description: Using Python as a medium to call R
-functionality within ArcGIS.  The repository contains an ArcGIS Toolbox and
-two example scripts (Point Clustering and Logistic Regression)
+# NOTE: This repository is deprecated, Esri has created an  project to directly [link ArcGIS and R](http://blogs.esri.com/esri/esri-insider/2015/07/20/building-a-bridge-to-the-r-community/), see: [https://r-arcgis.github.io](https://r-arcgis.github.io)
 
 # R-toolbox-py
 
