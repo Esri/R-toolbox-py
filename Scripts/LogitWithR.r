@@ -2,20 +2,27 @@
 print("Loading Libraries....")
 library(maptools)  		
 library(sm)
+library(foreign)
 
 #### Check Version for Required "lrm" Package ####
 checkRVersion = function(checkMajor, checkMinor){
-    majorBool = as.numeric(R.version$major) >= checkMajor
-    minorBool = as.numeric(R.version$minor) >= checkMinor
-    majorBool & minorBool
+    minorBool = as.numeric(R.version$minor) >= checkMinor	#will work until v3.14
+    majorBool = as.numeric(R.version$major) == checkMajor
+	if (!minorBool)	{
+		majorBool = as.numeric(R.version$major) > checkMajor
+		if (majorBool)	{
+			minorBool = TRUE
+			}
+		}
+    if (majorBool & minorBool)	{
+		library(rms)
+		}
+	else	{
+		library(Design)
+		}
     }
 
 versionBool = checkRVersion(2, 14)
-if (versionBool){
-    library(rms)
-}else{
-    require(Design)
-}
 
 #### Get Arguments ####
 Args = commandArgs()
@@ -68,7 +75,7 @@ if (usePenalty){
     }
 
 ### Residuals ####
-res = residuals.lrm(fit)
+res = resid(fit)
 resOut = c(res)
 resSTD = (resOut - mean(resOut)) / sqrt(var(resOut))
 
@@ -79,18 +86,9 @@ shp$StdResid = resSTD
 writeSpatialShape(shp, outputFC)
 
 ### Write Coefficient DBF Table ####
-allIndVars = c("Intercept")
-allIndVars = append(allIndVars, independentVars)
-k = length(allIndVars)
-d = matrix(0, k, 4)
-d[,1] = fit$coefficients
-d[,2] = sqrt(diag(fit$var))
-d[,3] = d[,1] / d[,2]
-d[,4] = pnorm(abs(d[,3]), lower.tail = FALSE) * 2.0
-coefList = list("Variable" = allIndVars, "Coef" = d[,1], 
-               "StdError" = d[,2], "Wald" = d[,3], 
-               "Prob" = d[,4])
-coefFrame = data.frame(coefList)
+coefFrame <- data.frame(c("Intercept",independentVars))
+names(coefFrame)[1] <- "Coefficients"
+coefFrame <- cbind(coefFrame,coef(summary(fit)))
 write.dbf(coefFrame, coefTable)
 
 ### Write Diagnostic DBF Table ####
